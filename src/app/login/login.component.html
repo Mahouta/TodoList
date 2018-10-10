@@ -6,17 +6,14 @@
       </div>
       <div class="main-div">
         <form [formGroup]="loginForm">
-
           <div class="example-container">
             <mat-form-field>
               <input matInput placeholder="Enter your email" formControlName="email" required>
               <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
             </mat-form-field>
-
             <mat-form-field>
               <input matInput type="password" placeholder="Enter your password" formControlName="password">
             </mat-form-field>
-
           </div>
 
           <br>
@@ -29,16 +26,13 @@
           <br />
 
           <div *ngIf="message" class="alert alert-danger" role="alert">
-              {{message}}
+            {{message}}
           </div>
 
           <br />
           <p>Not yet member ? <a [routerLink]="['/register']">Sign up</a> </p>
         </div>
-
       </div>
-
     </div>
   </div>
 </div>
-

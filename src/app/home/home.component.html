@@ -1,11 +1,5 @@
-
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01"
-    aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-
+<nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-md-center">
+  <div class="d-md-flex d-block flex-row mx-md-auto mx-0">
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
       <li class="nav-item active">
         <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
@@ -13,28 +7,44 @@
       <li class="nav-item">
         <a class="nav-link" (click)="dec()">logout</a>
       </li>
-
     </ul>
-    <form [formGroup]="homeForm" class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" formControlName="todo" placeholder="add todo">
-      <button class="btn btn-outline-success my-2 my-sm-0" (click)="addTodo()" type="submit">Add</button>
-    </form>
   </div>
 </nav>
 
+<div class="home">
+  <br><br>
+  <div class="container">
+    <div class="row">
+      <div class="col-2"></div>
+      <div class="col-8">
+        <div class="row text-center">
+          <div class="col-12 ">
+            <div class="input-group myform">
+            </div>
+          </div>
+        </div>
 
-<br><br>
+        <form [formGroup]="homeForm">
+          <input class="formulaire form-control mr-sm-2" formControlName="todo" placeholder="Add a todo">
+          <button class="btn btn-outline-success my-2 my-sm-0" (click)="addTodo()" type="submit" hidden="hidden">Add</button>
+        </form>
 
+        <div *ngFor="let todo of todos; let i = index" id={{i}}>
+          <div class="card">
+            <div class="card-body">
+              <h5 id="checked" class="card-title"><input (change)="FieldsChange(i, $event)" value="angular" type="checkbox" />
+                {{todo.content }}
+                <button type="button" class="close" aria-label="Close" (click)="deleteTodo(i)">
+                  <span aria-hidden="true">&times;</span>
+                </button></h5>
 
-<div id='here' *ngFor="let todo of todos; let i = index">
-  <div class="card" style="width: 18rem;">
-    <div class="card-body">
-      <h5 class="card-title">{{todo.content }}</h5>
-      <h6 class="card-subtitle mb-2 text-muted">{{todo.date }}</h6>
+              <h6 class="card-subtitle mb-2 text-muted">{{todo.date}}</h6>
 
-
-      <input (change)="FieldsChange(i, $event)" value="angular" type="checkbox" />
-      <button type="submit" class="btn btn-primary" (click)="deleteTodo(i)">Delete</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-2"></div>
     </div>
   </div>
 </div>
